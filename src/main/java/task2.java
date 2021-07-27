@@ -17,9 +17,8 @@ public class task2 {
 
         do {
             result = getTextFromScanner(wordText);
-            System.out.println("result " + result);
         }
-        while (result != 1 || result != 0);
+        while (result != 1 && result != 0);
         scanner.close();
     }
 
@@ -27,22 +26,19 @@ public class task2 {
         int result = 2;
         String trial;
         do {
-            if (result == 2) {
-                System.out.print("Введите название фрукта: ");
-                trial = scanner.nextLine();
-                if (trial.equals("0")) {
-                    System.out.println("Вы сдались. Фуу. Загаданное слово было " + wordText);
-                    result = 0;
-                    break;
-                }
-                result = equalsUpper(trial);
-                result = compareString(wordText, trial);
-                compareChar(wordText, trial);
-
-            } else if (result == 1) {
-                System.out.println("Вы угадали! Поздравляю!");
+            System.out.print("Введите название фрукта: ");
+            trial = scanner.nextLine();
+            if (trial.equals("0")) {
+                System.out.println("Вы сдались. Фуу. Загаданное слово было " + wordText);
+                result = 0;
+                break;
             }
-        } while (result != 1 || result != 0);
+            if (equalsUpper(trial) == 1) break;
+            if (compareString(wordText, trial) == 1) {
+                result = 1;
+                System.out.println("Вы угадали! Поздравляю!");
+            } else compareChar(wordText, trial);
+        } while (result != 1 && result != 0);
         return result;
     }
 
