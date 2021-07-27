@@ -4,8 +4,6 @@ public class task1 {
     public static Scanner scanner = new Scanner(System.in);
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
-    public static boolean isNumber = false;
-
     public static void main(String[] args) {
         final int min = 0;
         final int max = 9;
@@ -25,10 +23,11 @@ public class task1 {
             else System.out.println(ANSI_RED + "Вы проиграли! Правильное число = "+rnd + ANSI_RESET);
         }
         while (count > 0);
-
+        scanner.close();
     }
 
     public static int getNumberFromScanner(int min, int max) {
+        boolean isNumber = false;
         int number = 0;
         do {
             isNumber = scanner.hasNextInt();
